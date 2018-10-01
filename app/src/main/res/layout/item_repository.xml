@@ -21,31 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="end"
-            app:constraint_referenced_ids="userLabel,nameLabel,infoLabel" />
-
-        <TextView
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin"
-            android:textAppearance="?android:textAppearanceLarge"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/name"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            tools:text="gmazzo" />
-
-        <TextView
-            android:id="@+id/userLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/label_user"
-            app:layout_constraintBaseline_toBaselineOf="@id/user"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintHorizontal_bias="1" />
+            app:constraint_referenced_ids="nameLabel,descriptionLabel" />
 
         <TextView
             android:id="@+id/name"
@@ -55,12 +31,13 @@
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="?colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/user"
-            app:layout_constraintBottom_toTopOf="@+id/info"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/url"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            tools:text="Guillermo Mazzola" />
+            tools:text="gmazzo/gs.demo.kotlin-dagger-mvp" />
 
         <TextView
             android:id="@+id/nameLabel"
@@ -74,27 +51,42 @@
             app:layout_constraintHorizontal_bias="1" />
 
         <TextView
-            android:id="@+id/info"
+            android:id="@+id/url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            tools:text="https://github.com/gmazzo/gs.demo.kotlin-dagger-mvp" />
+
+        <TextView
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="?colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintTop_toBottomOf="@id/url"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            tools:text="3 repositorios" />
+            tools:text="A demo app in Kotlin, with Dagger and MVP pattern using GitHub API as datasource" />
 
         <TextView
-            android:id="@+id/infoLabel"
+            android:id="@+id/descriptionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/label_info"
-            app:layout_constraintBaseline_toBaselineOf="@id/info"
+            android:text="@string/label_description"
+            app:layout_constraintBaseline_toBaselineOf="@id/description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/barrier"
             app:layout_constraintHorizontal_bias="1" />

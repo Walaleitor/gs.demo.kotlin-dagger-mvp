@@ -1,4 +1,4 @@
-package org.test.kotlin.demo.users;
+package org.test.kotlin.demo.users.repos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 
 import org.test.LoadingAdapter;
 import org.test.kotlin.demo.R;
-import org.test.kotlin.demo.api.dto.UserDTO;
-import org.test.kotlin.demo.users.repos.RepositoriesFragment;
+import org.test.kotlin.demo.api.dto.RepositoryDTO;
 
 import java.util.List;
 
@@ -19,13 +18,18 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import dagger.android.support.DaggerFragment;
 
-public class UsersFragment extends DaggerFragment implements UsersContract.View {
+public class RepositoriesFragment extends DaggerFragment implements RepositoriesContract.View {
 
     @Inject
-    UsersContract.Presenter presenter;
+    RepositoriesContract.Presenter presenter;
 
-    public static UsersFragment create() {
-        return new UsersFragment();
+    public static RepositoriesFragment create(String user) {
+        Bundle args = new Bundle(1);
+        args.putString(RepositoriesContract.ARG_USERNAME, user);
+
+        RepositoriesFragment fragment = new RepositoriesFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     {
@@ -54,16 +58,9 @@ public class UsersFragment extends DaggerFragment implements UsersContract.View 
     }
 
     @Override
-    public void showUsers(List<UserDTO> users) {
+    public void showRepositories(List<RepositoryDTO> repositories) {
         RecyclerView recyclerView = getView().findViewById(R.id.recycler);
-        recyclerView.setAdapter(new UsersAdapter(users, this::onUserSelected));
-    }
-
-    private void onUserSelected(UserDTO user) {
-        getFragmentManager().beginTransaction() // TODO podría hacerse genérico
-                .replace(getId(), RepositoriesFragment.create(user.getUser()))
-                .addToBackStack(null)
-                .commit();
+        recyclerView.setAdapter(new RepositoriesAdapter(repositories));
     }
 
 }

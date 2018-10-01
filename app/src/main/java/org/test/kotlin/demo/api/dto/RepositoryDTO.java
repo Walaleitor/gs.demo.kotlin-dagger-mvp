@@ -2,6 +2,8 @@ package org.test.kotlin.demo.api.dto;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class RepositoryDTO {
 
     @SerializedName("id")
@@ -12,6 +14,12 @@ public class RepositoryDTO {
 
     @SerializedName("description")
     private String description;
+
+    @SerializedName("html_url")
+    private String repoURL;
+
+    @SerializedName("pushed_at")
+    private Date pushedAt;
 
     public long getId() {
         return id;
@@ -37,4 +45,20 @@ public class RepositoryDTO {
         this.description = description;
     }
 
+    public String getRepoURL() {
+        return repoURL;
+    }
+
+    public void setRepoURL(String repoURL) {
+        this.repoURL = repoURL;
+    }
+
+    public Date getPushedAt() {
+        return pushedAt;
+    }
+
+    public void setPushedAt(Date pushedAt) {
+        this.pushedAt = pushedAt;
+    }
+    
 }

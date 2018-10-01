@@ -14,41 +14,41 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
-    private final List<UserDTO> users;
+    private final List<UserDTO> items;
     private final Consumer<UserDTO> selectionListener;
 
     {
         setHasStableIds(true);
     }
 
-    public UsersAdapter(List<UserDTO> users, Consumer<UserDTO> selectionListener) {
-        this.users = users;
+    public UsersAdapter(List<UserDTO> items, Consumer<UserDTO> selectionListener) {
+        this.items = items;
         this.selectionListener = selectionListener;
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return items.size();
     }
 
     @Override
     public long getItemId(int position) {
-        return users.get(position).getId();
+        return items.get(position).getId();
     }
 
     @NonNull
     @Override
     public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_users_item, parent, false);
+                .inflate(R.layout.item_users, parent, false);
         return new UsersViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
-        UserDTO user = users.get(position);
+        UserDTO user = items.get(position);
 
-        holder.bindUser(user);
+        holder.bindItem(user);
         holder.itemView.setOnClickListener($ -> selectionListener.accept(user));
     }
 

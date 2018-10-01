@@ -16,6 +16,9 @@ public class UserDTO {
     @SerializedName("avatar_url")
     private String avatarURL;
 
+    @SerializedName("html_url")
+    private String profileURL;
+
     @SerializedName("public_repos")
     private int repositories;
 
@@ -51,6 +54,14 @@ public class UserDTO {
         this.avatarURL = avatarURL;
     }
 
+    public String getProfileURL() {
+        return profileURL;
+    }
+
+    public void setProfileURL(String profileURL) {
+        this.profileURL = profileURL;
+    }
+
     public int getRepositories() {
         return repositories;
     }
@@ -58,4 +69,5 @@ public class UserDTO {
     public void setRepositories(int repositories) {
         this.repositories = repositories;
     }
+
 }
