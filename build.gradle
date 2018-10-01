@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.71'
         androidxVersion = '1.0.0'
+        daggerVersion = '2.17'
     }
     repositories {
         google()

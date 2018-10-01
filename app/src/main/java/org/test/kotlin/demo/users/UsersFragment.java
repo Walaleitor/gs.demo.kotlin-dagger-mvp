@@ -13,10 +13,10 @@ import org.test.kotlin.demo.model.User;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import dagger.android.support.DaggerFragment;
 
-public class UsersFragment extends Fragment {
+public class UsersFragment extends DaggerFragment {
 
     public static UsersFragment create() {
         return new UsersFragment();
