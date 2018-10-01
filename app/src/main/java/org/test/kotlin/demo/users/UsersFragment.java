@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.test.kotlin.demo.R;
-import org.test.kotlin.demo.model.User;
-import org.test.kotlin.demo.users.edit.UsersEditFragment;
+import org.test.kotlin.demo.api.dto.UserDTO;
 
 import java.util.List;
 
@@ -48,15 +47,15 @@ public class UsersFragment extends DaggerFragment implements UsersContract.View 
     }
 
     @Override
-    public void showUsers(List<User> users) {
+    public void showUsers(List<UserDTO> users) {
         View view = getView();
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setAdapter(new UsersAdapter(users, this::onUserSelected));
     }
 
-    private void onUserSelected(User user) {
+    private void onUserSelected(UserDTO user) {
         getFragmentManager().beginTransaction() // TODO podría hacerse genérico
-                .replace(getId(), UsersEditFragment.create(user))
+                // FIXME .replace(getId(), UsersEditFragment.create(user))
                 .addToBackStack(null)
                 .commit();
     }
@@ -73,7 +72,7 @@ public class UsersFragment extends DaggerFragment implements UsersContract.View 
         switch (item.getItemId()) {
             case R.id.add:
                 getFragmentManager().beginTransaction() // TODO podría hacerse genérico
-                        .replace(getId(), UsersEditFragment.create())
+                        // FIXME .replace(getId(), UsersEditFragment.create())
                         .addToBackStack(null)
                         .commit();
                 return true;

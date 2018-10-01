@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.test.kotlin.demo.R;
-import org.test.kotlin.demo.model.User;
+import org.test.kotlin.demo.api.dto.UserDTO;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -13,15 +13,15 @@ import java.util.function.Consumer;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
- class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
-    private final List<User> users;
-    private final Consumer<User> selectionListener;
+class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
+    private final List<UserDTO> users;
+    private final Consumer<UserDTO> selectionListener;
 
     {
         setHasStableIds(true);
     }
 
-    public UsersAdapter(List<User> users, Consumer<User> selectionListener) {
+    public UsersAdapter(List<UserDTO> users, Consumer<UserDTO> selectionListener) {
         this.users = users;
         this.selectionListener = selectionListener;
     }
@@ -46,7 +46,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
-        User user = users.get(position);
+        UserDTO user = users.get(position);
 
         holder.bindUser(user);
         holder.itemView.setOnClickListener($ -> selectionListener.accept(user));

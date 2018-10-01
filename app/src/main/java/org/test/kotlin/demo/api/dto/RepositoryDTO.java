@@ -1,8 +1,16 @@
 package org.test.kotlin.demo.api.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 public class RepositoryDTO {
+
+    @SerializedName("id")
     private long id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("description")
     private String description;
 
     public long getId() {

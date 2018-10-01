@@ -1,10 +1,23 @@
 package org.test.kotlin.demo.api.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserDTO {
+
+    @SerializedName("id")
     private long id;
+
+    @SerializedName("login")
+    private String user;
+
+    @SerializedName("name")
     private String name;
-    private String country;
+
+    @SerializedName("avatar_url")
     private String avatarURL;
+
+    @SerializedName("public_repos")
+    private int repositories;
 
     public long getId() {
         return id;
@@ -12,6 +25,14 @@ public class UserDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -22,14 +43,6 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getAvatarURL() {
         return avatarURL;
     }
@@ -38,4 +51,11 @@ public class UserDTO {
         this.avatarURL = avatarURL;
     }
 
+    public int getRepositories() {
+        return repositories;
+    }
+
+    public void setRepositories(int repositories) {
+        this.repositories = repositories;
+    }
 }
