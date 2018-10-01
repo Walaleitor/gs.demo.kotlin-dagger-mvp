@@ -1,5 +1,8 @@
 package org.test.kotlin.demo.api;
 
+import javax.inject.Provider;
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -8,9 +11,10 @@ import retrofit2.Retrofit;
 public interface GitHubModule {
 
     @Provides
-    static GitHubAPI provideAPI(Retrofit.Builder retrofit) {
-        return retrofit
-                .baseUrl("https://api.github.com")
+    @Singleton
+    static GitHubAPI provideAPI(Provider<Retrofit.Builder> retrofit) {
+        return retrofit.get()
+                .baseUrl("https://api.github.com/")
                 .build()
                 .create(GitHubAPI.class);
     }

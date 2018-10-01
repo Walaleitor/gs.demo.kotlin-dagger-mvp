@@ -10,13 +10,21 @@ import android.view.ViewGroup;
 
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.model.User;
+import org.test.kotlin.demo.users.edit.UsersEditFragment;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import dagger.android.support.DaggerFragment;
 
-public class UsersFragment extends DaggerFragment {
+public class UsersFragment extends DaggerFragment implements UsersContract.View {
+
+    @Inject
+    UsersContract.Presenter presenter;
 
     public static UsersFragment create() {
         return new UsersFragment();
@@ -33,10 +41,17 @@ public class UsersFragment extends DaggerFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
-        view.<RecyclerView>findViewById(R.id.recycler).setAdapter(new UsersAdapter(this::onUserSelected));
+        presenter.onViewReady();
+    }
+
+    @Override
+    public void showUsers(List<User> users) {
+        View view = getView();
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        recyclerView.setAdapter(new UsersAdapter(users, this::onUserSelected));
     }
 
     private void onUserSelected(User user) {

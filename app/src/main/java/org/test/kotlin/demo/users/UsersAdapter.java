@@ -7,28 +7,33 @@ import android.view.ViewGroup;
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.model.User;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static org.test.Utils.asDate;
-
-public class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
-    private final User users[] = {
-            new User(1, "Guillermo Mazzola", "Software Developer", asDate("19/12/1985")),
-            new User(2, "German Bravo Rojas", "Android Developer", null),
-            new User(3, "Konstantin Portnov", "iOS Developer", null)
-    };
+ class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
+    private final List<User> users;
     private final Consumer<User> selectionListener;
 
-    public UsersAdapter(Consumer<User> selectionListener) {
+    {
+        setHasStableIds(true);
+    }
+
+    public UsersAdapter(List<User> users, Consumer<User> selectionListener) {
+        this.users = users;
         this.selectionListener = selectionListener;
     }
 
     @Override
     public int getItemCount() {
-        return users.length;
+        return users.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return users.get(position).getId();
     }
 
     @NonNull
@@ -41,7 +46,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
-        User user = users[position];
+        User user = users.get(position);
 
         holder.bindUser(user);
         holder.itemView.setOnClickListener($ -> selectionListener.accept(user));

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class UsersViewHolder extends RecyclerView.ViewHolder {
+ class UsersViewHolder extends RecyclerView.ViewHolder {
     private final TextView name;
     private final TextView nameLabel;
     private final TextView profession;

@@ -1,4 +1,4 @@
-package org.test.kotlin.demo.users;
+package org.test.kotlin.demo.users.edit;
 
 import android.os.Bundle;
 import android.text.Editable;
