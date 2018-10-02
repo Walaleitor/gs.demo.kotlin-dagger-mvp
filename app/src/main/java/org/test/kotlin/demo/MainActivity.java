@@ -12,9 +12,10 @@ import org.test.kotlin.demo.users.UsersFragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends DaggerAppCompatActivity {
+public class MainActivity extends DaggerAppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class MainActivity extends DaggerAppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
+
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
 
         if (savedInstanceState == null) {
             onNavigationItemSelected(navigation.getMenu().findItem(R.id.users));
@@ -51,6 +54,13 @@ public class MainActivity extends DaggerAppCompatActivity {
                     .commit();
         }
         return true;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        boolean canGoBack = getSupportFragmentManager().getBackStackEntryCount() > 0;
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(canGoBack);
     }
 
 }
