@@ -9,7 +9,7 @@ import android.widget.EditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.test.LoadingAdapter;
+import org.test.utils.LoadingAdapter;
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.api.dto.RepositoryDTO;
 import org.test.kotlin.demo.repos.ReposAdapter;

@@ -1,4 +1,4 @@
-package org.test;
+package org.test.utils;
 
 import android.view.LayoutInflater;
 import android.view.View;

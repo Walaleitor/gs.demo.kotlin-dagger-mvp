@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.test.LoadingAdapter;
+import org.test.utils.LoadingAdapter;
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.api.dto.RepositoryDTO;
 
