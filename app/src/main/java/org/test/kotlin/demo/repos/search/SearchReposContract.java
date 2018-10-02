@@ -12,6 +12,8 @@ interface SearchReposContract {
 
         void showRepositories(@NonNull List<RepositoryDTO> repositories);
 
+        void showError(Throwable throwable);
+
     }
 
     interface Presenter {

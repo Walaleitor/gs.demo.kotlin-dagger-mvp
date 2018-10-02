@@ -1,6 +1,7 @@
 package org.test.kotlin.demo;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -12,10 +13,10 @@ public class Application extends DaggerApplication {
     public void onCreate() {
         super.onCreate();
 
-        RxJavaPlugins.setErrorHandler($ -> {
-            $.printStackTrace();
+        RxJavaPlugins.setErrorHandler(t -> {
+            Log.e(Thread.currentThread().getName(), t.getMessage(), t);
 
-            Log.e(Thread.currentThread().getName(), $.getMessage(), $);
+            Toast.makeText(this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         });
 
     }

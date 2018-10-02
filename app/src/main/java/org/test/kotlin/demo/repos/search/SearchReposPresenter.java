@@ -27,7 +27,7 @@ class SearchReposPresenter implements SearchReposContract.Presenter {
         disposable = api.searchRepositories(query)
                 .map(SearchDTO::getItems)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showRepositories);
+                .subscribe(view::showRepositories, view::showError);
     }
 
 }

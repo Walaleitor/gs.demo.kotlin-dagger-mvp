@@ -9,10 +9,10 @@ import android.widget.EditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.test.utils.LoadingAdapter;
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.api.dto.RepositoryDTO;
 import org.test.kotlin.demo.repos.ReposAdapter;
+import org.test.utils.LoadingAdapter;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import dagger.android.support.DaggerFragment;
 
-import static org.test.Utils.hideKeyboard;
+import static org.test.utils.ViewUtils.hideKeyboard;
 
 public class SearchReposFragment extends DaggerFragment implements SearchReposContract.View {
 
@@ -60,6 +60,7 @@ public class SearchReposFragment extends DaggerFragment implements SearchReposCo
         hideKeyboard(view);
 
         TextInputLayout query = view.findViewById(R.id.query);
+        query.setErrorEnabled(false);
         String queryValue = query.getEditText().getText().toString();
         presenter.onQueryChange(queryValue);
 
@@ -69,8 +70,21 @@ public class SearchReposFragment extends DaggerFragment implements SearchReposCo
 
     @Override
     public void showRepositories(@NonNull List<RepositoryDTO> repositories) {
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler);
+        View view = getView();
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setAdapter(new ReposAdapter(repositories));
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        View view = getView();
+
+        TextInputLayout query = view.findViewById(R.id.query);
+        query.setError(throwable.getLocalizedMessage());
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        recyclerView.setAdapter(null);
     }
 
 }

@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.test.utils.LoadingAdapter;
 import org.test.kotlin.demo.R;
 import org.test.kotlin.demo.api.dto.UserDTO;
 import org.test.kotlin.demo.repos.ReposFragment;
+import org.test.utils.LoadingAdapter;
 
 import java.util.List;
 
@@ -51,7 +51,9 @@ public class UsersFragment extends DaggerFragment implements UsersContract.View 
 
     @Override
     public void showUsers(@NonNull List<UserDTO> users) {
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler);
+        View view = getView();
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setAdapter(new UsersAdapter(users, this::onUserSelected));
     }
 
