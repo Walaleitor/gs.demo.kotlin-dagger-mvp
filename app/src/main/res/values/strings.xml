@@ -1,9 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+
     <string name="app_name">Koltin Test</string>
-    <string name="title_users">Users</string>
-    <string name="title_shapes">Shapes</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="err_field_required">Este campo es requerido</string>
+
+    <string name="title_users">Usuarios</string>
+    <string name="title_search">Buscar</string>
+    <string name="title_notifications">Notificaciones</string>
+
     <string name="label_user">Usuario</string>
     <string name="label_name">Nombre</string>
     <string name="label_info">Info</string>
@@ -13,5 +15,7 @@
         <item quantity="one">%1$d repositorio</item>
         <item quantity="other">%1$d repositorios</item>
     </plurals>
+
+    <string name="err_field_required">Este campo es requerido</string>
 
 </resources>

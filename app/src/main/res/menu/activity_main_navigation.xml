@@ -7,9 +7,9 @@
         android:title="@string/title_users" />
 
     <item
-        android:id="@+id/shapes"
-        android:icon="@drawable/ic_shapes"
-        android:title="@string/title_shapes" />
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/title_search" />
 
     <item
         android:id="@+id/notifications"

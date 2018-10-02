@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.test.kotlin.demo.shapes.ShapeFragment;
+import org.test.kotlin.demo.repos.search.SearchReposFragment;
 import org.test.kotlin.demo.users.UsersFragment;
 
 import androidx.annotation.NonNull;
@@ -40,8 +40,8 @@ public class MainActivity extends DaggerAppCompatActivity {
                 newFragment = UsersFragment.create();
                 break;
 
-            case R.id.shapes:
-                newFragment = ShapeFragment.create();
+            case R.id.search:
+                newFragment = SearchReposFragment.create();
                 break;
         }
 

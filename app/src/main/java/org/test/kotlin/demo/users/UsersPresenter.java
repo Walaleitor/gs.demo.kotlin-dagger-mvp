@@ -10,11 +10,14 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.Disposables;
 
 class UsersPresenter implements UsersContract.Presenter {
     private final UsersContract.View view;
     private final GitHubAPI api;
     private Single<List<UserDTO>> users;
+    private Disposable disposable = Disposables.disposed();
 
     @Inject
     UsersPresenter(UsersContract.View view, GitHubAPI api) {
@@ -24,11 +27,12 @@ class UsersPresenter implements UsersContract.Presenter {
 
     @Override
     public void onViewReady() {
-        retrieveUsers();
+        loadUsers();
     }
 
-    private void retrieveUsers() {
+    private void loadUsers() {
         if (users == null) {
+            disposable.dispose();
             users = Observable.fromArray("gmazzo", "rosorio1101")
                     .flatMapMaybe(api::getUser)
                     .toList()
@@ -36,7 +40,7 @@ class UsersPresenter implements UsersContract.Presenter {
                     .observeOn(AndroidSchedulers.mainThread());
         }
 
-        users.subscribe(view::showUsers);
+        disposable = users.subscribe(view::showUsers);
     }
 
 }

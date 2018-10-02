@@ -1,16 +1,18 @@
-package org.test.kotlin.demo.users.repos;
+package org.test.kotlin.demo.repos;
 
 import org.test.kotlin.demo.api.dto.RepositoryDTO;
 
 import java.util.List;
 
-interface RepositoriesContract {
+import androidx.annotation.NonNull;
+
+interface ReposContract {
 
     String ARG_USERNAME = "userName";
 
     interface View {
 
-        void showRepositories(List<RepositoryDTO> repositories);
+        void showRepositories(@NonNull List<RepositoryDTO> repositories);
 
     }
 

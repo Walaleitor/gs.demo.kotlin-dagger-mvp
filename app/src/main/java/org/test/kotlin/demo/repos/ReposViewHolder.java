@@ -1,4 +1,4 @@
-package org.test.kotlin.demo.users.repos;
+package org.test.kotlin.demo.repos;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -11,14 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-class RepositoriesViewHolder extends RecyclerView.ViewHolder {
+class ReposViewHolder extends RecyclerView.ViewHolder {
     private final TextView name;
     private final TextView nameLabel;
     private final TextView url;
     private final TextView description;
     private final TextView descriptionLabel;
 
-    public RepositoriesViewHolder(@NonNull View view) {
+    public ReposViewHolder(@NonNull View view) {
         super(view);
 
         this.name = itemView.findViewById(R.id.name);

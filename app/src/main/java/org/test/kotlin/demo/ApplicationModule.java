@@ -24,6 +24,7 @@ interface ApplicationModule {
     @Provides
     static Retrofit.Builder provideRetrofit() {
         return new Retrofit.Builder()
+                .validateEagerly(true)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                 .baseUrl("http://server/somePath/");

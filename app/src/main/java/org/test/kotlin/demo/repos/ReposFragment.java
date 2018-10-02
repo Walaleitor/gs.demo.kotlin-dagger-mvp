@@ -1,4 +1,4 @@
-package org.test.kotlin.demo.users.repos;
+package org.test.kotlin.demo.repos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,22 +18,18 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import dagger.android.support.DaggerFragment;
 
-public class RepositoriesFragment extends DaggerFragment implements RepositoriesContract.View {
+public class ReposFragment extends DaggerFragment implements ReposContract.View {
 
     @Inject
-    RepositoriesContract.Presenter presenter;
+    ReposContract.Presenter presenter;
 
-    public static RepositoriesFragment create(String user) {
+    public static ReposFragment create(String user) {
         Bundle args = new Bundle(1);
-        args.putString(RepositoriesContract.ARG_USERNAME, user);
+        args.putString(ReposContract.ARG_USERNAME, user);
 
-        RepositoriesFragment fragment = new RepositoriesFragment();
+        ReposFragment fragment = new ReposFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    {
-        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -46,7 +42,7 @@ public class RepositoriesFragment extends DaggerFragment implements Repositories
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = getView().findViewById(R.id.recycler);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setAdapter(new LoadingAdapter());
     }
 
@@ -58,9 +54,9 @@ public class RepositoriesFragment extends DaggerFragment implements Repositories
     }
 
     @Override
-    public void showRepositories(List<RepositoryDTO> repositories) {
+    public void showRepositories(@NonNull List<RepositoryDTO> repositories) {
         RecyclerView recyclerView = getView().findViewById(R.id.recycler);
-        recyclerView.setAdapter(new RepositoriesAdapter(repositories));
+        recyclerView.setAdapter(new ReposAdapter(repositories));
     }
 
 }

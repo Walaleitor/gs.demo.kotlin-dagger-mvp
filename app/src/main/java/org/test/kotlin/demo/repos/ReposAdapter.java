@@ -1,4 +1,4 @@
-package org.test.kotlin.demo.users.repos;
+package org.test.kotlin.demo.repos;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +12,14 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesViewHolder> {
+public class ReposAdapter extends RecyclerView.Adapter<ReposViewHolder> {
     private final List<RepositoryDTO> items;
 
     {
         setHasStableIds(true);
     }
 
-    public RepositoriesAdapter(List<RepositoryDTO> items) {
+    public ReposAdapter(List<RepositoryDTO> items) {
         this.items = items;
     }
 
@@ -35,14 +35,14 @@ class RepositoriesAdapter extends RecyclerView.Adapter<RepositoriesViewHolder> {
 
     @NonNull
     @Override
-    public RepositoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReposViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_repository, parent, false);
-        return new RepositoriesViewHolder(view);
+        return new ReposViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RepositoriesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReposViewHolder holder, int position) {
         RepositoryDTO item = items.get(position);
 
         holder.bindItem(item);
