@@ -11,6 +11,7 @@ import org.test.kotlin.demo.api.dto.UserDTO
 import org.test.kotlin.demo.repos.ReposFragment
 import org.test.utils.LoadingAdapter
 import org.test.utils.inflate
+import org.test.utils.log
 import org.test.utils.replaceWith
 import javax.inject.Inject
 
@@ -36,6 +37,10 @@ class UsersFragment : DaggerFragment(), UsersContract.View {
 
     override fun showUsers(users: List<UserDTO>) {
         recycler.adapter = UsersAdapter(users, this::onUserSelected)
+    }
+
+    override fun showError(throwable: Throwable) {
+        throwable.log()
     }
 
     private fun onUserSelected(user: UserDTO) {

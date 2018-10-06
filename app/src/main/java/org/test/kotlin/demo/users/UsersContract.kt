@@ -8,6 +8,8 @@ interface UsersContract {
 
         fun showUsers(users: List<UserDTO>)
 
+        fun showError(throwable: Throwable)
+
     }
 
     interface Presenter {

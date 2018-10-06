@@ -8,6 +8,8 @@ interface ReposContract {
 
         fun showRepositories(repositories: List<RepositoryDTO>)
 
+        fun showError(throwable: Throwable)
+
     }
 
     interface Presenter {

@@ -1,6 +1,7 @@
 package org.test.utils
 
 import android.content.Context
+import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -40,3 +41,22 @@ fun Fragment.replaceWith(other: Fragment, tag: String? = null, addToBackStack: B
         .replace(id, other, tag)
         .apply { if (addToBackStack) addToBackStack(null) }
         .commit()
+
+fun <R> doAsync(onResult: (R) -> Unit, onError: (Throwable) -> Unit = { throw it }, action: () -> R) =
+        object : AsyncTask<Unit, Unit, R>() {
+            var error: Throwable? = null
+
+            override fun doInBackground(vararg params: Unit?): R? {
+                return try {
+                    action.invoke()
+
+                } catch (t: Throwable) {
+                    error = t
+                    null
+                }
+            }
+
+            override fun onPostExecute(result: R) =
+                    error?.let(onError::invoke) ?: onResult.invoke(result)
+
+        }.execute()!!

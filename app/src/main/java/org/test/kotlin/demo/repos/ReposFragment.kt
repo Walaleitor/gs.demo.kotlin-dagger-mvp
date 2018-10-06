@@ -11,6 +11,7 @@ import org.test.kotlin.demo.R
 import org.test.kotlin.demo.api.dto.RepositoryDTO
 import org.test.utils.LoadingAdapter
 import org.test.utils.inflate
+import org.test.utils.log
 import javax.inject.Inject
 
 class ReposFragment : DaggerFragment(), ReposContract.View {
@@ -35,6 +36,10 @@ class ReposFragment : DaggerFragment(), ReposContract.View {
 
     override fun showRepositories(repositories: List<RepositoryDTO>) {
         recycler.adapter = ReposAdapter(repositories)
+    }
+
+    override fun showError(throwable: Throwable) {
+        throwable.log()
     }
 
     companion object {
