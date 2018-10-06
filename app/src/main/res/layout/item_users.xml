@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin"
-        android:paddingStart="@dimen/margin"
-        android:paddingEnd="@dimen/margin"
         android:animateLayoutChanges="true"
         android:foreground="?selectableItemBackground"
+        android:orientation="vertical"
         tools:ignore="RtlHardcoded">
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="end"
-            app:constraint_referenced_ids="userLabel,nameLabel,infoLabel" />
 
         <TextView
             android:id="@+id/user"
@@ -29,24 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceLarge"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/url"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             tools:text="gmazzo" />
-
-        <TextView
-            android:id="@+id/userLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/label_user"
-            app:layout_constraintBaseline_toBaselineOf="@id/user"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintHorizontal_bias="1" />
 
         <TextView
             android:id="@+id/url"
@@ -55,12 +29,6 @@
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceSmall"
             android:autoLink="web"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toBottomOf="@id/user"
-            app:layout_constraintBottom_toTopOf="@+id/name"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             tools:text="https://github.com/gmazzo" />
 
         <TextView
@@ -70,25 +38,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="?colorAccent"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toBottomOf="@id/url"
-            app:layout_constraintBottom_toTopOf="@+id/info"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             tools:text="Guillermo Mazzola" />
-
-        <TextView
-            android:id="@+id/nameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/label_name"
-            app:layout_constraintBaseline_toBaselineOf="@id/name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintHorizontal_bias="1" />
 
         <TextView
             android:id="@+id/info"
@@ -97,26 +47,8 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="?colorAccent"
-            app:layout_constrainedWidth="true"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             tools:text="3 repositorios" />
 
-        <TextView
-            android:id="@+id/infoLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/label_info"
-            app:layout_constraintBaseline_toBaselineOf="@id/info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintHorizontal_bias="1" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

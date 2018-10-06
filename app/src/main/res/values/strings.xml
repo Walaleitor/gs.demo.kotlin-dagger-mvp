@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
 
-    <string name="app_name">Koltin Test</string>
+    <string name="app_name">GitHub Browser</string>
 
     <string name="title_users">Usuarios</string>
     <string name="title_search">Buscar</string>
